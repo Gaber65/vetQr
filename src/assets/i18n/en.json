@@ -1,0 +1,89 @@
+{
+  "login": {
+    "title": "Sign In",
+    "email": "Email or Username",
+    "password": "Password",
+    "rememberMe": "Remember me",
+    "forgotPassword": "Forgot Password?",
+    "signIn": "Sign In",
+    "signingIn": "Signing in...",
+    "invalidCredentials": "Invalid email/username or password",
+    "demoCredentials": "Demo Credentials"
+  },
+  "dashboard": {
+    "welcome": "Welcome back",
+    "subtitle": "Here's what's happening with your veterinary clinic today",
+    "totalPets": "Total Pets",
+    "appointmentsToday": "Appointments Today",
+    "vaccinations": "Vaccinations",
+    "activeUsers": "Active Users",
+    "quickActions": "Quick Actions"
+  },
+  "superAdmin": {
+    "title": "Super Admin Dashboard",
+    "subtitle": "Manage all clinics and system-wide settings",
+    "manageClinics": "Manage Clinics",
+    "allUsers": "All Users",
+    "systemSettings": "System Settings",
+    "reports": "Reports"
+  },
+  "admin": {
+    "title": "Admin Dashboard",
+
+    "subtitle": "Manage clinic operations and staff",
+    "doctors": "Doctors",
+    "pets": "Pets",
+    "appointments": "Appointments",
+    "inventory": "Inventory",
+    "reports": "Reports",
+    "settings": "Settings"
+  },
+  "user": {
+    "title": "My Pets",
+    "subtitle": "View your pet's health records and vaccination schedule",
+    "nextVaccination": "Next Vaccination",
+    "viewRecords": "View Records",
+    "bookAppointment": "Book Appointment"
+  },
+  "common": {
+    "logout": "Logout",
+    "profile": "Profile",
+    "settings": "Settings",
+    "help": "Help",
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "add": "Add",
+    "search": "Search"
+  },
+  "HEADER": {
+    "DASHBOARD": "Dashboard",
+    "SUPER_ADMIN": "Super Admin",
+    "ADMIN": "Admin",
+    "CREATE_CLINIC": "Create Clinic",
+    "USERS": "Users",
+    "PETS": "Pets",
+    "APPOINTMENTS": "Appointments",
+    "PROFILE": "Profile",
+    "SETTINGS": "Settings",
+    "LOGOUT": "Logout",
+    "ENGLISH": "English",
+    "ARABIC": "Arabic",
+    "ROLE_USER": "User",
+    "ROLE_ADMIN": "Admin",
+    "ROLE_SUPER_ADMIN": "Super Admin"
+  },
+  "CLINIC": {
+      "CREATE": "Create Clinic",
+      "NAME": "Clinic Name",
+      "ADDRESS": "Address",
+      "PHONE": "Phone Number",
+      "EMAIL": "Email",
+      "DESCRIPTION": "Description",
+      "SUBMIT": "Create",
+      "SUCCESS": "Clinic created successfully",
+      "ERROR": "Error creating clinic"
+  }
+
+}

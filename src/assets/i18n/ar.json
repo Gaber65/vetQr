@@ -1,0 +1,89 @@
+{
+  "login": {
+    "title": "تسجيل الدخول",
+    "email": "البريد الإلكتروني أو اسم المستخدم",
+    "password": "كلمة المرور",
+    "rememberMe": "تذكرني",
+    "forgotPassword": "نسيت كلمة المرور؟",
+    "signIn": "تسجيل الدخول",
+    "signingIn": "جاري تسجيل الدخول...",
+    "invalidCredentials": "البريد الإلكتروني/اسم المستخدم أو كلمة المرور غير صحيحة",
+    "demoCredentials": "بيانات تجريبية"
+  },
+  "dashboard": {
+    "welcome": "مرحبًا بعودتك",
+    "subtitle": "إليك ما يحدث في عيادتك البيطرية اليوم",
+    "totalPets": "إجمالي الحيوانات الأليفة",
+    "appointmentsToday": "المواعيد اليوم",
+    "vaccinations": "التطعيمات",
+    "activeUsers": "المستخدمون النشطون",
+    "quickActions": "إجراءات سريعة"
+  },
+  "superAdmin": {
+    "title": "لوحة المشرف الرئيسي",
+    "subtitle": "إدارة جميع العيادات والإعدادات العامة",
+    "manageClinics": "إدارة العيادات",
+    "allUsers": "جميع المستخدمين",
+    "systemSettings": "إعدادات النظام",
+    "reports": "التقارير"
+  },
+  "admin": {
+    "title": "لوحة المدير",
+
+    "subtitle": "إدارة عمليات العيادة والموظفين",
+    "doctors": "الدكاترة",
+    "pets": "الحيوانات الأليفة",
+    "appointments": "المواعيد",
+    "inventory": "المخزون",
+    "reports": "التقارير",
+    "settings": "الإعدادات"
+  },
+  "user": {
+    "title": "حيواناتي الأليفة",
+    "subtitle": "عرض السجلات الصحية وجدول التطعيمات لحيواناتك الأليفة",
+    "nextVaccination": "التطعيم القادم",
+    "viewRecords": "عرض السجلات",
+    "bookAppointment": "حجز موعد"
+  },
+  "common": {
+    "logout": "تسجيل الخروج",
+    "profile": "الملف الشخصي",
+    "settings": "الإعدادات",
+    "help": "المساعدة",
+    "save": "حفظ",
+    "cancel": "إلغاء",
+    "delete": "حذف",
+    "edit": "تعديل",
+    "add": "إضافة",
+    "search": "بحث"
+  },
+  "HEADER": {
+    "DASHBOARD": "لوحة التحكم",
+    "SUPER_ADMIN": "المشرف الرئيسي",
+    "ADMIN": "المدير",
+    "CREATE_CLINIC": "إنشاء عيادة",
+    "USERS": "المستخدمون",
+    "PETS": "الحيوانات الأليفة",
+    "APPOINTMENTS": "المواعيد",
+    "PROFILE": "الملف الشخصي",
+    "SETTINGS": "الإعدادات",
+    "LOGOUT": "تسجيل الخروج",
+    "ENGLISH": "الإنجليزية",
+    "ARABIC": "العربية",
+    "ROLE_USER": "مستخدم",
+    "ROLE_ADMIN": "مدير",
+    "ROLE_SUPER_ADMIN": "المشرف الرئيسي"
+  },
+  "CLINIC": {
+      "CREATE": "إنشاء عيادة",
+      "NAME": "اسم العيادة",
+      "ADDRESS": "العنوان",
+      "PHONE": "رقم الهاتف",
+      "EMAIL": "البريد الإلكتروني",
+      "DESCRIPTION": "الوصف",
+      "SUBMIT": "إنشاء",
+      "SUCCESS": "تم إنشاء العيادة بنجاح",
+      "ERROR": "خطأ في إنشاء العيادة"
+  }
+
+}
