@@ -84,6 +84,22 @@
       "SUBMIT": "إنشاء",
       "SUCCESS": "تم إنشاء العيادة بنجاح",
       "ERROR": "خطأ في إنشاء العيادة"
+  },
+   "SIDEBAR": {
+    "APP_NAME": "QuadInsight.QR",
+    "VERSION": "الإصدار",
+    "MAIN": "الرئيسية",
+    "MANAGEMENT": "الإدارة",
+
+    "DASHBOARD": "لوحة التحكم",
+    "MY_PETS": "حيواناتي",
+    "APPOINTMENTS": "المواعيد",
+    "DOCTORS": "الأطباء",
+    "INVENTORY": "المخزون",
+    "REPORTS": "التقارير",
+
+    "LOGOUT": "تسجيل الخروج"
   }
+
 
 }

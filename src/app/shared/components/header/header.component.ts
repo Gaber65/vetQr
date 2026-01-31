@@ -1,4 +1,5 @@
-import { Component, OnInit, Inject } from '@angular/core';
+// header.component.ts
+import { Component, OnInit, Inject, Output, EventEmitter } from '@angular/core';
 import { AuthService } from '../../../core/services/auth.service';
 import { TranslateService } from '@ngx-translate/core';
 import { User, UserRole } from '../../models';
@@ -24,6 +25,8 @@ export class HeaderComponent implements OnInit {
   userRole: string = '';
   userInitials: string = '';
 
+  @Output() menuToggle = new EventEmitter<void>();
+
   constructor(
     private authService: AuthService,
     private translate: TranslateService,
@@ -40,7 +43,6 @@ export class HeaderComponent implements OnInit {
   }
 
   loadUserInfo(): void {
-    debugger
     const userInfo = this.authService.getUserInfoFromToken();
     if (userInfo) {
       this.userName = userInfo.name;
@@ -72,7 +74,7 @@ export class HeaderComponent implements OnInit {
   }
 
   toggleMenu(): void {
-    this.isMenuOpen = !this.isMenuOpen;
+    this.menuToggle.emit();
   }
 
   toggleDropdown(): void {

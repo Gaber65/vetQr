@@ -49,7 +49,17 @@ header {
         margin-top: 4px;
       }
     }
+header nav {
+  display: flex;
+  align-items: center;
+}
 
+.user-actions {
+  margin-inline-start: auto; /* يدعم RTL و LTR */
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
     .nav-links {
       display: flex;
       gap: 1rem;
@@ -103,7 +113,7 @@ header {
 
     .user-actions {
       display: flex;
-      align-items: center;
+      align-content: flex-end;
       gap: 1.5rem;
 
       .lang-switcher {
@@ -362,5 +372,30 @@ header {
     right: 0;
     bottom: 0;
     z-index: 999;
+  }
+}
+// header.component.scss - Add this to your existing CSS
+.mobile-menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #1f2937;
+  padding: 8px;
+  border-radius: 8px;
+  transition: background 0.2s;
+
+  &:hover {
+    background: #f3f4f6;
+  }
+
+  mat-icon {
+    font-size: 24px;
+    width: 24px;
+    height: 24px;
+  }
+
+  @media (max-width: 968px) {
+    display: block;
   }
 }

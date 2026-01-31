@@ -1,66 +1,10 @@
+<!-- header.component.html -->
 <header *ngIf="isAuthenticated">
   <nav>
-    <a routerLink="/dashboard" class="brand">
-      <!-- <img src="assets/logo.png" alt="Logo"> -->
-      <span>QuadInsight.QR</span>
-      <span class="version-badge">v{{ appVersion }}</span>
-    </a>
-
-    <div class="nav-links" [class.active]="isMenuOpen">
-      <!-- Dashboard Link (Common for all) -->
-      <a 
-        routerLink="/dashboard" 
-        routerLinkActive="active"
-        [routerLinkActiveOptions]="{ exact: true }"
-      >
-        <mat-icon>dashboard</mat-icon>
-        {{ "HEADER.DASHBOARD" | translate }}
-      </a>
-
-      <!-- Super Admin Links -->
-      <ng-container *ngIf="isSuperAdmin">
-        <a
-          routerLink="/super-admin"
-          routerLinkActive="active"
-          [routerLinkActiveOptions]="{ exact: true }"
-        >
-          <mat-icon>admin_panel_settings</mat-icon>
-          {{ "HEADER.SUPER_ADMIN" | translate }}
-        </a>
-        <a routerLink="/super-admin/create-clinic" routerLinkActive="active">
-          <mat-icon>add_business</mat-icon>
-          {{ "HEADER.CREATE_CLINIC" | translate }}
-        </a>
-         <a routerLink="/super-admin/create-clinic" routerLinkActive="active">
-          <mat-icon>add_business</mat-icon>
-          {{ "HEADER.CREATE_CLINIC" | translate }}
-        </a>
-      </ng-container>
-
-      <!-- Admin Links -->
-      <ng-container *ngIf="isAdmin">
-        <a routerLink="/admin" routerLinkActive="active">
-          <mat-icon>settings</mat-icon>
-          {{ "HEADER.ADMIN" | translate }}
-        </a>
-        <a routerLink="/admin/users" routerLinkActive="active">
-          <mat-icon>people</mat-icon>
-          {{ "HEADER.USERS" | translate }}
-        </a>
-      </ng-container>
-
-      <!-- User Links -->
-      <ng-container *ngIf="isUser">
-        <a routerLink="/user/pets" routerLinkActive="active">
-          <mat-icon>pets</mat-icon>
-          {{ "HEADER.PETS" | translate }}
-        </a>
-        <a routerLink="/user/appointments" routerLinkActive="active">
-          <mat-icon>event</mat-icon>
-          {{ "HEADER.APPOINTMENTS" | translate }}
-        </a>
-      </ng-container>
-    </div>
+    <!-- Mobile menu toggle button -->
+    <button class="mobile-menu-toggle" (click)="toggleMenu()" aria-label="Toggle menu">
+      <mat-icon>menu</mat-icon>
+    </button>
 
     <div class="user-actions">
       <!-- Language Switcher -->
@@ -132,10 +76,6 @@
         </div>
       </div>
     </div>
-
-    <button class="mobile-toggle" (click)="toggleMenu()">
-      <mat-icon>{{ isMenuOpen ? 'close' : 'menu' }}</mat-icon>
-    </button>
   </nav>
   
   <!-- Backdrop for dropdown -->

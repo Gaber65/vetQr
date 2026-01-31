@@ -84,6 +84,21 @@
       "SUBMIT": "Create",
       "SUCCESS": "Clinic created successfully",
       "ERROR": "Error creating clinic"
+  },
+    "SIDEBAR": {
+    "APP_NAME": "QuadInsight.QR",
+    "VERSION": "Version",
+    "MAIN": "Main",
+    "MANAGEMENT": "Management",
+
+    "DASHBOARD": "Dashboard",
+    "MY_PETS": "My Pets",
+    "APPOINTMENTS": "Appointments",
+    "DOCTORS": "Doctors",
+    "INVENTORY": "Inventory",
+    "REPORTS": "Reports",
+
+    "LOGOUT": "Logout"
   }
 
 }
