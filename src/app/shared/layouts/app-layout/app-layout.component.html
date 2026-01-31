@@ -1,0 +1,35 @@
+<!-- app-layout.component.html -->
+<div class="app-layout">
+  <!-- Mobile overlay with proper accessibility -->
+  <div 
+    class="sidebar-overlay" 
+    [class.visible]="isMobile && isMobileSidebarOpen"
+    (click)="closeMobileSidebar()"
+    [attr.aria-hidden]="!isMobileSidebarOpen"
+    [attr.aria-label]="'Close sidebar'"
+    role="button"
+    tabindex="0"
+    (keydown.enter)="closeMobileSidebar()"
+    (keydown.space)="closeMobileSidebar()">
+  </div>
+  
+  <app-sidebar 
+    [isMobile]="isMobile"
+    [isMobileOpen]="isMobileSidebarOpen"
+    [isCollapsed]="isSidebarCollapsed"
+    (stateChange)="onSidebarStateChange($event)"
+    (closeMobile)="closeMobileSidebar()">
+  </app-sidebar>
+  
+ <div class="main-content" 
+       [class.expanded]="!isMobile && sidebarWidth === 260"
+       [class.collapsed]="!isMobile && sidebarWidth === 80"
+       [class.mobile-open]="isMobile && isMobileSidebarOpen">
+    
+    <!-- Use your header component here -->
+    <app-header (menuToggle)="toggleMobileSidebar()"></app-header>
+    <main class="content-area" role="main">
+      <ng-content></ng-content>
+    </main>
+  </div>
+</div>

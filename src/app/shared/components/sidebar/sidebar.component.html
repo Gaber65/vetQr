@@ -1,0 +1,93 @@
+<aside 
+  #sidebar
+  class="sidebar" 
+  [ngClass]="getSidebarClasses()"
+  [attr.aria-hidden]="isMobile && !isMobileOpen"
+  [attr.aria-expanded]="isMobileOpen">
+  
+  <!-- Header -->
+  <div class="sidebar-header">
+    <div class="logo" [routerLink]="['/dashboard']" role="button" tabindex="0">
+      <span class="material-icons" aria-hidden="true">pets</span>
+      
+      <div *ngIf="!isCollapsed || isMobile" class="logo-texts">
+        <span class="logo-text">
+          {{ 'SIDEBAR.APP_NAME' | translate }}
+        </span>
+        <span class="version-badge" *ngIf="!isCollapsed || isMobile">
+          {{ 'SIDEBAR.VERSION' | translate }} {{ appVersion }}
+        </span>
+      </div>
+    </div>
+
+    <button 
+      class="toggle-btn" 
+      (click)="toggleSidebar()"
+      [attr.aria-label]="isCollapsed ? 'Expand sidebar' : 'Collapse sidebar'"
+      *ngIf="!isMobile">
+      <span class="material-icons" aria-hidden="true">
+        {{ isCollapsed ? 'chevron_right' : 'chevron_left' }}
+      </span>
+    </button>
+    
+    <button 
+      class="mobile-close-btn" 
+      (click)="toggleSidebar()"
+      [attr.aria-label]="'Close menu'"
+      *ngIf="isMobile">
+      <span class="material-icons" aria-hidden="true">close</span>
+    </button>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="sidebar-nav" role="menu">
+    <div class="nav-section" *ngFor="let section of navSections">
+      <span 
+        class="nav-section-title" 
+        *ngIf="(!isCollapsed || isMobile) && section.titleKey">
+        {{ section.titleKey | translate }}
+      </span>
+
+      <a
+        class="nav-item"
+        *ngFor="let item of section.items"
+        [class.active]="activeRoute === item.route"
+        (click)="navigateTo(item.route)"
+        (keydown.enter)="navigateTo(item.route)"
+        (keydown.space)="navigateTo(item.route)"
+        role="menuitem"
+        [attr.aria-current]="activeRoute === item.route ? 'page' : null"
+        tabindex="0">
+        
+        <span class="material-icons nav-icon" aria-hidden="true">{{ item.icon }}</span>
+        
+        <span class="nav-text" *ngIf="!isCollapsed || isMobile">
+          {{ item.labelKey | translate }}
+        </span>
+        
+        <span 
+          class="nav-badge" 
+          *ngIf="item.badge && (!isCollapsed || isMobile)"
+          [attr.aria-label]="item.badge + ' notifications'">
+          {{ item.badge }}
+        </span>
+      </a>
+    </div>
+  </nav>
+
+  <!-- Footer -->
+  <div class="sidebar-footer">
+    <a 
+      class="nav-item logout" 
+      (click)="logout()"
+      (keydown.enter)="logout()"
+      (keydown.space)="logout()"
+      role="button"
+      tabindex="0">
+      <span class="material-icons nav-icon" aria-hidden="true">logout</span>
+      <span class="nav-text" *ngIf="!isCollapsed || isMobile">
+        {{ 'SIDEBAR.LOGOUT' | translate }}
+      </span>
+    </a>
+  </div>
+</aside>
