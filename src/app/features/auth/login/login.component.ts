@@ -54,7 +54,7 @@ export class LoginComponent implements OnInit {
     this.error = '';
 
     const command: LoginRequest = {
-      email: this.loginForm.get('emailOrUsername')?.value,
+      emailOrPhoneNumber: this.loginForm.get('emailOrUsername')?.value,
       password: this.loginForm.get('password')?.value,
       rememberMe: false
     };

@@ -60,13 +60,13 @@ constructor(
     private http: HttpClient,
     @Inject(APP_ENV) private env: AppEnvironment
   ) {
-    this.apiUrl = `${this.env.apiUrl}/auth`;
+    this.apiUrl = `${this.env.apiUrl}`;
   }
 
 
   login(loginRequest: LoginRequest): Observable<LoginResponse> {
     return this.http
-    .post<ApiResponse<LoginResponse>>(`${this.apiUrl}`, loginRequest)
+    .post<ApiResponse<LoginResponse>>(`${this.apiUrl}/signin`, loginRequest)
     .pipe(
       map(response => {
         if (response.success && response.data) {
