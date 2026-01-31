@@ -7,12 +7,14 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { HeaderComponent } from './components/header/header.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { AppLayoutComponent } from './layouts/app-layout/app-layout.component';
+import { RoleDirective } from './directive/role.directive';
 
 @NgModule({
   declarations: [
     HeaderComponent,
     SidebarComponent,
-    AppLayoutComponent
+    AppLayoutComponent,
+    RoleDirective
   ],
   imports: [
     CommonModule,
@@ -25,6 +27,7 @@ import { AppLayoutComponent } from './layouts/app-layout/app-layout.component';
     HeaderComponent,
     SidebarComponent,
     AppLayoutComponent,
+    RoleDirective,
     TranslateModule,
     MatIconModule,
     MatTooltipModule

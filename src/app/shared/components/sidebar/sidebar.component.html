@@ -44,13 +44,13 @@
     <div class="nav-section" *ngFor="let section of navSections">
       <span 
         class="nav-section-title" 
-        *ngIf="(!isCollapsed || isMobile) && section.titleKey">
+        *ngIf="(!isCollapsed || isMobile) && section.titleKey && shouldShowSection(section.items)">
         {{ section.titleKey | translate }}
       </span>
 
       <a
         class="nav-item"
-        *ngFor="let item of section.items"
+        *ngFor="let item of getFilteredNavItems(section.items)"
         [class.active]="activeRoute === item.route"
         (click)="navigateTo(item.route)"
         (keydown.enter)="navigateTo(item.route)"

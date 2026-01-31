@@ -6,30 +6,33 @@ import {
   Input, 
   HostListener,
   ElementRef,
-  ViewChild,
+  ViewChild, 
   AfterViewInit,
-  OnDestroy 
+  OnDestroy,
+  OnInit 
 } from '@angular/core';
 import { Router } from '@angular/router';
 import { APP_ENV } from '../../../env/app-env.token';
 import { AppEnvironment } from '../../../env/app-env.interface';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { AuthService } from '../../../core/services/auth.service';
+import { UserRole } from '../../models';
 
 export interface NavItem {
   icon: string;
   labelKey: string;
   route: string;
   badge?: number;
-  roles?: string[];
+  roles?: UserRole[];
 }
 
 @Component({
   selector: 'app-sidebar',
-  templateUrl: "./sidebar.component.html",
-  styleUrls: ["./sidebar.component.scss"]
+  templateUrl: './sidebar.component.html',
+  styleUrls: ['./sidebar.component.scss']
 })
-export class SidebarComponent implements AfterViewInit, OnDestroy {
+export class SidebarComponent implements AfterViewInit, OnDestroy, OnInit {
   @Input() isMobile = false;
   @Input() isMobileOpen = false;
   @Input() isCollapsed = false;
@@ -43,29 +46,43 @@ export class SidebarComponent implements AfterViewInit, OnDestroy {
     {
       titleKey: 'SIDEBAR.MAIN',
       items: [
-        { icon: 'dashboard', labelKey: 'SIDEBAR.DASHBOARD', route: '/dashboard' },
-        { icon: 'pets', labelKey: 'SIDEBAR.MY_PETS', route: '/pets', badge: 3 },
-        { icon: 'calendar_month', labelKey: 'SIDEBAR.APPOINTMENTS', route: '/appointments' }
+        { icon: 'dashboard', labelKey: 'SIDEBAR.DASHBOARD', route: '/dashboard', roles: [UserRole.USER, UserRole.ADMIN, UserRole.SUPER_ADMIN] },
+        { icon: 'pets', labelKey: 'SIDEBAR.MY_PETS', route: '/pets', badge: 3, roles: [UserRole.USER, UserRole.ADMIN, UserRole.SUPER_ADMIN] },
+        { icon: 'calendar_month', labelKey: 'SIDEBAR.APPOINTMENTS', route: '/appointments', roles: [UserRole.USER, UserRole.ADMIN, UserRole.SUPER_ADMIN] }
       ]
     },
     {
       titleKey: 'SIDEBAR.MANAGEMENT',
       items: [
-        { icon: 'medical_services', labelKey: 'SIDEBAR.DOCTORS', route: '/doctors' },
-        { icon: 'inventory', labelKey: 'SIDEBAR.INVENTORY', route: '/inventory' },
-        { icon: 'analytics', labelKey: 'SIDEBAR.REPORTS', route: '/reports' }
+        { icon: 'medical_services', labelKey: 'SIDEBAR.DOCTORS', route: '/doctors', roles: [UserRole.ADMIN, UserRole.SUPER_ADMIN] },
+        { icon: 'inventory', labelKey: 'SIDEBAR.INVENTORY', route: '/inventory', roles: [UserRole.ADMIN, UserRole.SUPER_ADMIN] },
+        { icon: 'analytics', labelKey: 'SIDEBAR.REPORTS', route: '/reports', roles: [UserRole.ADMIN, UserRole.SUPER_ADMIN] }
+      ]
+    },
+    {
+      titleKey: 'SIDEBAR.SUPER_ADMIN',
+      items: [
+        { icon: 'admin_panel_settings', labelKey: 'SIDEBAR.CLINICS', route: '/super-admin', roles: [UserRole.SUPER_ADMIN] },
+        { icon: 'settings', labelKey: 'SIDEBAR.SYSTEM_SETTINGS', route: '/super-admin/settings', roles: [UserRole.SUPER_ADMIN] }
       ]
     }
   ];
   
   appVersion: string;
+  currentUserRole: UserRole | null = null;
   private destroy$ = new Subject<void>();
 
   constructor(
     @Inject(APP_ENV) private env: AppEnvironment,
-    private router: Router
+    private router: Router,
+    private authService: AuthService
   ) {
     this.appVersion = this.env.version;
+  }
+
+  ngOnInit() {
+    // Get current user role on initialization
+    this.currentUserRole = this.authService.getCurrentUser()?.role || null;
   }
 
   ngAfterViewInit() {
@@ -93,6 +110,27 @@ export class SidebarComponent implements AfterViewInit, OnDestroy {
     }
   }
 
+  /**
+   * Filter navigation items based on user role
+   */
+  getFilteredNavItems(items: NavItem[]): NavItem[] {
+    return items.filter(item => {
+      // If no roles specified, show to everyone
+      if (!item.roles || item.roles.length === 0) {
+        return true;
+      }
+      // Check if current user's role matches any of the allowed roles
+      return this.currentUserRole ? item.roles.includes(this.currentUserRole) : false;
+    });
+  }
+
+  /**
+   * Check if a section should be visible based on filtered items
+   */
+  shouldShowSection(items: NavItem[]): boolean {
+    return this.getFilteredNavItems(items).length > 0;
+  }
+
   toggleSidebar(): void {
     if (this.isMobile) {
       this.closeMobile.emit();
@@ -113,9 +151,8 @@ export class SidebarComponent implements AfterViewInit, OnDestroy {
   }
 
   logout(): void {
-    // Implement logout logic
-    console.log('Logging out...');
-    // Typically: this.authService.logout();
+    this.authService.logout();
+    this.router.navigate(['/auth/login']);
   }
 
   getSidebarClasses(): { [key: string]: boolean } {
