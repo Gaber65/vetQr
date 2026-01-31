@@ -11,12 +11,13 @@ body {
   font-family: 'Inter', 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: #f9fafb;
+  background: #f8fafc;
   color: #1f2937;
 }
 
 html, body {
   height: 100%;
+  overflow-x: hidden;
 }
 
 // Material Icons
@@ -36,23 +37,43 @@ html, body {
   -webkit-font-smoothing: antialiased;
 }
 
-// Scrollbar Styling
+// Enhanced Scrollbar Styling
 ::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
+  width: 8px;
+  height: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: #f1f5f9;
+  border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #888;
-  border-radius: 5px;
+  background: linear-gradient(135deg, #cbd5e1, #94a3b8);
+  border-radius: 4px;
+  transition: all 0.3s;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #555;
+  background: linear-gradient(135deg, #94a3b8, #64748b);
+}
+
+// Professional Button Styles
+button {
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.3);
+}
+
+// Card Enhancement Styles
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 #f1f5f9;
 }
 
 // Utility Classes
@@ -83,13 +104,15 @@ html, body {
 .p-3 { padding: 1.5rem; }
 .p-4 { padding: 2rem; }
 
-// Animation Classes
+// Enhanced Animation Classes
 @keyframes fadeIn {
   from {
     opacity: 0;
+    transform: translateY(20px);
   }
   to {
     opacity: 1;
+    transform: translateY(0);
   }
 }
 
@@ -104,12 +127,69 @@ html, body {
   }
 }
 
+@keyframes scaleIn {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes slideLeft {
+  from {
+    transform: translateX(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
 .fade-in {
-  animation: fadeIn 0.3s ease-in;
+  animation: fadeIn 0.4s ease-out;
 }
 
 .slide-in {
-  animation: slideIn 0.3s ease-out;
+  animation: slideIn 0.4s ease-out;
+}
+
+.scale-in {
+  animation: scaleIn 0.3s ease-out;
+}
+
+.slide-left {
+  animation: slideLeft 0.3s ease-out;
+}
+
+// Professional Card Hover Effect
+.card-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+  }
+}
+
+// Gradient Text
+.gradient-text {
+  background: linear-gradient(135deg, #4f46e5, #06b6d4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+// Professional Input Styles
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
 }
 
 // Responsive Helpers
@@ -122,5 +202,22 @@ html, body {
 @media (min-width: 577px) {
   .show-on-mobile {
     display: none !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .hide-on-tablet {
+    display: none !important;
+  }
+}
+
+// Print Styles
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  body {
+    background: white;
   }
 }

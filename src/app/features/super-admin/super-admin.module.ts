@@ -5,6 +5,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 import { SuperAdminComponent } from './super-admin.component';
 import { CreateClinicComponent } from './components/create-clinic/create-clinic.component';
+import { SharedModule } from '../../shared/shared.module';
 
 const routes: Routes = [
   { path: '', component: SuperAdminComponent },
@@ -20,7 +21,8 @@ const routes: Routes = [
     CommonModule,
     ReactiveFormsModule,
     TranslateModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    SharedModule
   ]
 })
 export class SuperAdminModule { }
